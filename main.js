@@ -1,58 +1,60 @@
+const cardArray = [
+  {
+    name: "blog",
+    img: "img/blog.png",
+  },
+  {
+    name: "blog",
+    img: "img/blog.png",
+  },
+  {
+    name: "interview",
+    img: "img/interview.png",
+  },
+  {
+    name: "interview",
+    img: "img/interview.png",
+  },
+  {
+    name: "meeting",
+    img: "img/meeting.png",
+  },
+  {
+    name: "meeting",
+    img: "img/meeting.png",
+  },
+  {
+    name: "social",
+    img: "img/social.png",
+  },
+  {
+    name: "social",
+    img: "img/social.png",
+  },
+  {
+    name: "time",
+    img: "img/time.png",
+  },
+  {
+    name: "time",
+    img: "img/time.png",
+  },
+  {
+    name: "work",
+    img: "img/work.png",
+  },
+  {
+    name: "work",
+    img: "img/work.png",
+  },
+];
+
 document.addEventListener("DOMContentLoaded", () => {
-  const cardArray = [
-    {
-      name: "blog",
-      img: "img/blog.png",
-    },
-    {
-      name: "blog",
-      img: "img/blog.png",
-    },
-    {
-      name: "interview",
-      img: "img/interview.png",
-    },
-    {
-      name: "interview",
-      img: "img/interview.png",
-    },
-    {
-      name: "meeting",
-      img: "img/meeting.png",
-    },
-    {
-      name: "meeting",
-      img: "img/meeting.png",
-    },
-    {
-      name: "social",
-      img: "img/social.png",
-    },
-    {
-      name: "social",
-      img: "img/social.png",
-    },
-    {
-      name: "time",
-      img: "img/time.png",
-    },
-    {
-      name: "time",
-      img: "img/time.png",
-    },
-    {
-      name: "work",
-      img: "img/work.png",
-    },
-    {
-      name: "work",
-      img: "img/work.png",
-    },
-  ];
+
 
   cardArray.sort(() => 0.5 - Math.random());
 
-  const grid = document.querySelector(".grid");
+  const grid = document.querySelector("#grid");
   const resultDisplay = document.querySelector("#result");
   var cardsChosen = [];
   var cardsChosenId = [];
