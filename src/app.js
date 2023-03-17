@@ -1,51 +1,51 @@
 const cardArray = [
   {
     name: "blog",
-    img: "img/blog.png",
+    img: "../public/img/blog.png",
   },
   {
     name: "blog",
-    img: "img/blog.png",
+    img: "../public/img/blog.png",
   },
   {
     name: "interview",
-    img: "img/interview.png",
+    img: "../public/img/interview.png",
   },
   {
     name: "interview",
-    img: "img/interview.png",
+    img: "../public/img/interview.png",
   },
   {
     name: "meeting",
-    img: "img/meeting.png",
+    img: "../public/img/meeting.png",
   },
   {
     name: "meeting",
-    img: "img/meeting.png",
+    img: "../public/img/meeting.png",
   },
   {
     name: "social",
-    img: "img/social.png",
+    img: "../public/img/social.png",
   },
   {
     name: "social",
-    img: "img/social.png",
+    img: "../public/img/social.png",
   },
   {
     name: "time",
-    img: "img/time.png",
+    img: "../public/img/time.png",
   },
   {
     name: "time",
-    img: "img/time.png",
+    img: "../public/img/time.png",
   },
   {
     name: "work",
-    img: "img/work.png",
+    img: "../public/img/work.png",
   },
   {
     name: "work",
-    img: "img/work.png",
+    img: "../public/img/work.png",
   },
 ];
 
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function createBoard() {
     for (let i = 0; i < cardArray.length; i++) {
       var card = document.createElement("img");
-      card.setAttribute("src", "img/blank.png");
+      card.setAttribute("src", "../public/img/blank.png");
       card.setAttribute("data-id", i);
       card.addEventListener("click", flipcard);
       grid.appendChild(card);
@@ -79,12 +79,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const optionTwoId = cardsChosenId[1];
     if (cardsChosen[0] === cardsChosen[1]) {
       alert("You found a match");
-      cards[optionOneId].setAttribute("src", "img/empty.png");
-      cards[optionTwoId].setAttribute("src", "img/empty.png");
+      cards[optionOneId].setAttribute("src", "../public/img/empty.png");
+      cards[optionTwoId].setAttribute("src", "../public/img/empty.png");
       cardsWon.push(cards);
     } else {
-      cards[optionOneId].setAttribute("src", "img/blank.png");
-      cards[optionTwoId].setAttribute("src", "img/blank.png");
+      cards[optionOneId].setAttribute("src", "../public/img/blank.png");
+      cards[optionTwoId].setAttribute("src", "../public/img/blank.png");
       alert("Sorry, try again");
     }
     cardsChosen = [];
