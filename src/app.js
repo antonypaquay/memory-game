@@ -1,51 +1,51 @@
 const cardArray = [
   {
-    name: "blog",
-    img: "../public/img/blog.png",
+    name: "rocket",
+    icon: "🚀",
   },
   {
-    name: "blog",
-    img: "../public/img/blog.png",
+    name: "rocket",
+    icon: "🚀",
   },
   {
-    name: "interview",
-    img: "../public/img/interview.png",
+    name: "castle",
+    icon: "🏰",
   },
   {
-    name: "interview",
-    img: "../public/img/interview.png",
+    name: "castle",
+    icon: "🏰",
   },
   {
-    name: "meeting",
-    img: "../public/img/meeting.png",
+    name: "beer",
+    icon: "🍺️",
   },
   {
-    name: "meeting",
-    img: "../public/img/meeting.png",
+    name: "beer",
+    icon: "🍺",
   },
   {
-    name: "social",
-    img: "../public/img/social.png",
+    name: "island",
+    icon: "🏝️",
   },
   {
-    name: "social",
-    img: "../public/img/social.png",
+    name: "island",
+    icon: "🏝️",
   },
   {
-    name: "time",
-    img: "../public/img/time.png",
+    name: "mountain",
+    icon: "⛰️",
   },
   {
-    name: "time",
-    img: "../public/img/time.png",
+    name: "mountain",
+    icon: "⛰️",
   },
   {
-    name: "work",
-    img: "../public/img/work.png",
+    name: "airplane",
+    icon: "✈️",
   },
   {
-    name: "work",
-    img: "../public/img/work.png",
+    name: "airplane",
+    icon: "✈️",
   },
 ];
 
@@ -62,9 +62,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function createBoard() {
     for (let i = 0; i < cardArray.length; i++) {
-      var card = document.createElement("img");
-      card.setAttribute("src", "../public/img/blank.png");
-      card.setAttribute("data-id", i);
+
+      const card = document.createElement('div');
+      card.classList.add('flip-card');
+      card.dataset.id = i.toString();
+
+      card.innerHTML = `
+        <div class="flip-card-inner">
+          <div class="flip-card-front"></div>
+          <div class="flip-card-back">${cardArray[i].icon}</div>
+        </div>
+      `
+
       card.addEventListener("click", flipcard);
       grid.appendChild(card);
     }
@@ -74,18 +83,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // check for matches
   function checkForMatch() {
-    var cards = document.querySelectorAll("img");
+    var cards = document.querySelectorAll('.flip-card');
+
     const optionOneId = cardsChosenId[0];
     const optionTwoId = cardsChosenId[1];
+
     if (cardsChosen[0] === cardsChosen[1]) {
-      alert("You found a match");
-      cards[optionOneId].setAttribute("src", "../public/img/empty.png");
-      cards[optionTwoId].setAttribute("src", "../public/img/empty.png");
+
+      cards[optionOneId].classList.remove('flip-card--selected');
+      cards[optionTwoId].classList.remove('flip-card--selected');
+      cards[optionOneId].classList.add('flip-card--matched');
+      cards[optionTwoId].classList.add('flip-card--matched');
+
       cardsWon.push(cards);
     } else {
-      cards[optionOneId].setAttribute("src", "../public/img/blank.png");
-      cards[optionTwoId].setAttribute("src", "../public/img/blank.png");
-      alert("Sorry, try again");
+
+      cards[optionOneId].classList.remove('flip-card--selected');
+      cards[optionTwoId].classList.remove('flip-card--selected');
+
     }
     cardsChosen = [];
     cardsChosenId = [];
@@ -96,13 +111,21 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // flip your card
-  function flipcard() {
-    var cardId = this.getAttribute("data-id");
-    cardsChosen.push(cardArray[cardId].name);
-    cardsChosenId.push(cardId);
-    this.setAttribute("src", cardArray[cardId].img);
-    if (cardsChosen.length === 2) {
-      setTimeout(checkForMatch, 500);
+  function flipcard(e) {
+    let target = e.currentTarget,
+        cardId = target.getAttribute("data-id");
+
+    if(cardsChosen.length < 2 && !target.classList.contains('flip-card--selected')){
+      target.classList.add('flip-card--selected');
+      cardsChosen.push(cardArray[cardId].name);
+      cardsChosenId.push(cardId);
+    } else {
+      cardsChosen = [];
+      cardsChosenId = [];
     }
+
+      if (cardsChosen.length === 2) {
+          setTimeout(checkForMatch, 500);
+      }
   }
 });
